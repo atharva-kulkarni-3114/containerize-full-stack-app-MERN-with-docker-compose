@@ -12,8 +12,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying Docker containers...'
-                sh 'chmod +x deploy.sh'
-                sh './deploy.sh'
+                sh 'chmod +x scripts/deploy.sh'
+                sh './scripts/deploy.sh'
             }
         }
         
@@ -21,8 +21,8 @@ pipeline {
             steps {
                 echo 'Running health checks...'
                 timeout(time: 5, unit: 'MINUTES') {
-                    sh 'chmod +x health-check.sh'
-                    sh './health-check.sh'
+                    sh 'chmod +x scripts/health-check.sh'
+                    sh './scripts/health-check.sh'
                 }
             }
         }
@@ -37,4 +37,5 @@ pipeline {
         }
     }
 }
+
 
